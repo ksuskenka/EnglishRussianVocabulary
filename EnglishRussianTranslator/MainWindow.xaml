@@ -1,0 +1,55 @@
+﻿<Window x:Class="EnglishRussianTranslator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="" Height="521.642" Width="626.093" Icon="google translate.ico" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+        </Grid.ColumnDefinitions>
+        <DockPanel HorizontalAlignment="Stretch"
+                   Grid.Row="0" VerticalAlignment="Stretch" Margin="0,0,0,10" >
+            <Button x:Name="uiAddBtn"  VerticalAlignment="Stretch" Width="89" HorizontalAlignment="Left" Margin="0,0,7,0" Click="uiAddBtn_Click">
+                <DockPanel>
+                    <Image Source="Images/add.png" Height="20"></Image>
+                    <TextBlock Text="Добавить" Margin="5,0,0,0"></TextBlock>
+                </DockPanel>
+            </Button>
+            <Button x:Name="uiEditBtn" VerticalAlignment="Stretch" Width="125" Margin="0,0,7,0" HorizontalAlignment="Left" Click="uiEditBtn_Click">
+                <DockPanel>
+                    <Image Source="Images/edit.png" Height="20"></Image>
+                    <TextBlock Text="Редактировать" Margin="5,0,0,0"></TextBlock>
+                </DockPanel>
+            </Button>
+            <Button x:Name="uiDeleteBtn" Height="50" VerticalAlignment="Top" Width="87" Click="uiDeleteBtn_Click">
+                <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="77" Height="26">
+                    <Image Source="Images/delete.png" Height="25" HorizontalAlignment="Left"></Image>
+                    <TextBlock Text="Удалить" Margin="5,0,0,0"></TextBlock>
+                </DockPanel>
+            </Button>
+            <StackPanel Height="60" VerticalAlignment="Top" Width="119" HorizontalAlignment="Left">
+                <ComboBox x:Name="uiLanguageCbx" Height="30" Margin="0,15,0,0"  VerticalAlignment="Center" 
+                          ItemsSource="{Binding Path=LanguageType}" 
+                          DisplayMemberPath="LanguageName" 
+                          SelectedValuePath="ID" 
+                          SelectedValue="{Binding Path=CurrentLanguage.ID}"
+                          SelectedItem="{Binding Path=CurrentLanguage}"/>
+            </StackPanel>
+            <TextBox x:Name="uiSearchTextbox" Height="24" Width="109" TextWrapping="Wrap" Text="{Binding Path=Searchword}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,23,0,13" GotFocus="uiSearchTextbox_GotFocus" LostFocus="uiSearchTextbox_LostFocus" />
+            <Button x:Name="uiSearchBtn" Content="Найти"  VerticalAlignment="Stretch" Width="59" HorizontalAlignment="Right" Click="uiSearchBtn_Click"/>
+
+        </DockPanel>
+        <DataGrid x:Name="uiWordsDataGrid" HorizontalAlignment="Stretch" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" ItemsSource="{Binding Path=TranslateVariations}" Grid.Row="1" VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=ID}" Visibility="Hidden" Width="0"/>
+                <DataGridTextColumn Header="Слово"  Binding="{Binding Path=TranslationWord}" Visibility="Visible" Width="*" />
+              
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Window>

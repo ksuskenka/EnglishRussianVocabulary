@@ -1,0 +1,75 @@
+﻿<Window x:Class="EnglishRussianTranslator.AddEditForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="" Height="540.62" Width="507.789" MaxHeight="604" MaxWidth="543">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="407*"/>
+            <RowDefinition Height="46*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Stretch">
+            <DockPanel Height="60" LastChildFill="False" HorizontalAlignment="Stretch">
+                <Label x:Name="uiLanguageLabel" Content="Язык" Height="35" VerticalAlignment="Stretch" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="100,0,10,0" Width="71"/>
+                <ComboBox x:Name="uiLanguageComboBox" Height="35" VerticalAlignment="Stretch" Width="200"
+                          ItemsSource="{Binding Path=LanguageType}"
+                          DisplayMemberPath="LanguageName" 
+                          SelectedValuePath="ID" 
+                          SelectedValue="{Binding Path=CurrentLanguage.ID}"
+                          SelectedItem="{Binding Path=CurrentLanguage}"/>
+            </DockPanel>
+            <DockPanel Height="60" LastChildFill="False" HorizontalAlignment="Stretch">
+                <Label Content="Слово" Height="35" VerticalAlignment="Stretch" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Margin="100,0,10,0" Width="71"/>
+                <TextBox x:Name="uiMainWordTxt" Height="35" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200"/>
+
+            </DockPanel>
+        </StackPanel>
+        <GroupBox Header="Варианты перевода" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <DockPanel Height="35" LastChildFill="False">
+                    <Button x:Name="uiAddRowBtn" Height="35" VerticalAlignment="Top" Width="51" Margin="0,0,5,0" Click="uiAddRowBtn_Click" >
+                   <StackPanel >
+                            <Image Source="Images/add.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="30"></Image>
+                   </StackPanel>
+                    </Button>
+                    <Button x:Name="uiEditRowBtn" Height="35" VerticalAlignment="Top" Width="46" Margin="0,0,5,0" Click="uiEditRowBtn_Click">
+                        <StackPanel >
+                            <Image Source="Images/edit.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="30"></Image>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="uiDeleteRowBtn" Height="35" VerticalAlignment="Top" Width="47" Click="uiDeleteRowBtn_Click">
+                        <StackPanel >
+                            <Image Source="Images/delete.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="30"></Image>
+                        </StackPanel>
+                    </Button>
+                    <TextBox x:Name="uiNewTranslationTxt" Height="25" Margin="5,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170"/>
+                    <Button x:Name="uiEndEditBtn" Height="35" VerticalAlignment="Top" Width="45" Margin="5,0,0,0" Visibility="Visible" Click="uiEndEditBtn_Click">
+                        <StackPanel >
+                            <Image Source="Images/save.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="20"></Image>
+                        </StackPanel>
+                    </Button>
+                </DockPanel>
+                <DockPanel VerticalAlignment="Stretch" LastChildFill="True" Height="292">
+                    <DataGrid x:Name="uiTranslationDataGrid"  AutoGenerateColumns="False" HorizontalAlignment="Stretch" 
+                              VerticalAlignment="Stretch" ItemsSource="{Binding Path=TranslateVariations}" 
+                              IsReadOnly="True" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=ID}" Visibility="Hidden" Width="0"/>
+                            <DataGridTextColumn Header="Перевод"  Binding="{Binding Path=TranslationWord}" 
+                                                Visibility="Visible" Width="*" IsReadOnly="False"
+                                                />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+
+            </StackPanel>
+        </GroupBox>
+        <Button x:Name="uiSaveBtn"  HorizontalAlignment="Right"  Grid.Row="2" VerticalAlignment="Center" Width="130" Height="30" Click="uiSaveBtn_Click" >
+            <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <Image Source="Images/save.png" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="20"></Image>
+                <TextBlock Margin="5,0,0,0" Text="Сохранить"></TextBlock>
+            </DockPanel>
+        </Button>
+
+    </Grid>
+</Window>
