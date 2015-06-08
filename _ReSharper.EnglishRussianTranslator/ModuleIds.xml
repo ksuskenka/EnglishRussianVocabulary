@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="F5F2AA1C-07A8-4827-8677-41A861BF56F5" ModuleId="EnglishRussianTranslator.Client" />
+  <Module PersistentId="A1B735A3-DBC0-4251-9166-9C8D5A08B892" ModuleId="EnglishRussianTranslator.DataLayer" />
+  <Module PersistentId="9ED3E0FD-F513-4E8C-B247-4D69F96090CF" ModuleId="EnglishRussianTranslator.Server" />
+</Modules>
